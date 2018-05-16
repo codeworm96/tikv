@@ -63,7 +63,7 @@ done
 
 rm $LOG_FILE || true
 # don't remove the tests.out, coverage counts on it.
-if [[ "$TRAVIS" != "true" ]]; then
+if [[ "$TRAVIS" != "true" ]] && [[ "$CIRCLECI" != "true" ]]; then
     rm tests.out || true
 fi
 
