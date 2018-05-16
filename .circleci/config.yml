@@ -95,6 +95,12 @@ jobs:
           name: Testing
           command: make trace_test
           no_output_timeout: 1800s
+      - run:
+          name: Calculating Coverage
+          command: |
+            make -f ci-build/Makefile prepare_kcov
+            make -f ci-build/Makefile cover_linux
+          no_output_timeout: 1800s
               
 workflows:
   version: 2
