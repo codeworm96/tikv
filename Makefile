@@ -62,8 +62,8 @@ trace_test:
 test: SHELL=/bin/bash
 test:
 	# When SIP is enabled, DYLD_LIBRARY_PATH will not work in subshell, so we have to set it
-	# again here. LOCAL_DIR is defined in .travis.yml.
-	export DYLD_LIBRARY_PATH="${DYLD_LIBRARY_PATH}:${LOCAL_DIR}/lib" && \
+	# again here. LOCAL_PREFIX is defined in .circleci/config.yml.
+	export DYLD_LIBRARY_PATH="${DYLD_LIBRARY_PATH}:${LOCAL_PREFIX}/lib" && \
 	export LOG_LEVEL=DEBUG && \
 	export RUST_BACKTRACE=1 && \
 	cargo test --features "${ENABLE_FEATURES}" ${EXTRA_CARGO_ARGS} -- --nocapture && \
