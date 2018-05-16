@@ -29,7 +29,7 @@ jobs:
           command: |
             sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y;
             sudo apt-get update -y;
-            sudo apt-get install -y g++-4.8 curl libdw-dev libelf-dev elfutils binutils-dev
+            sudo apt-get install -y g++-4.8 curl libdw-dev libelf-dev elfutils binutils-dev libcurl4-openssl-dev zlib1g-dev libiberty-dev
       - restore_cache:
           name: Restoring ~/.local Cache
           keys: 

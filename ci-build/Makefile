@@ -14,9 +14,9 @@ ${LOCAL_DIR}/lib/libgflags.a:
 # TODO: use official archive once https://github.com/SimonKagstrom/kcov/pull/146 is resolved and published.
 ${LOCAL_DIR}/bin/kcov:
 	cd /tmp && \
-	curl -L https://github.com/SimonKagstrom/kcov/archive/v33.tar.gz -o kcov.tar.gz && \
+	curl -L https://github.com/SimonKagstrom/kcov/archive/v35.tar.gz -o kcov.tar.gz && \
 	tar xf kcov.tar.gz && \
-	cd kcov-33 && \
+	cd kcov-35 && \
 	if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then \
 	    cmake -G Xcode . && \
 		xcodebuild -configuration Release && \
