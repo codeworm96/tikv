@@ -43,8 +43,12 @@ prepare_osx: prepare_brew ${LOCAL_PREFIX}/bin/kcov
 test_linux test_osx:
 	export CI=true && ${CI_BUILD_DIR}/test.sh
 
+prepare_cover:
+	cargo install cargo-tarpaulin
+
 cover_linux cover_osx:
 	export LOG_LEVEL=DEBUG && \
 	export RUST_BACKTRACE=1 && \
 	export RUST_TEST_THREADS=2 && \
-	grep " Running " tests.out | sed -e 's/Running//g' | xargs -n 1 -I {} ${LOCAL_PREFIX}/bin/kcov --verify --coveralls-id=${COVERALLS_REPO_TOKEN} --include-pattern tikv/src --exclude-pattern tikv/src/bin --strip-path `pwd`/ target/kcov {} --nocapture
+	cargo tarpaulin --coveralls ${COVERALLS_REPO_TOKEN}
+	# grep " Running " tests.out | sed -e 's/Running//g' | xargs -n 1 -I {} ${LOCAL_PREFIX}/bin/kcov --verify --coveralls-id=${COVERALLS_REPO_TOKEN} --include-pattern tikv/src --exclude-pattern tikv/src/bin --strip-path `pwd`/ target/kcov {} --nocapture
