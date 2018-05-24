@@ -51,4 +51,4 @@ cover_linux cover_osx:
 	export RUST_BACKTRACE=1 && \
 	export RUST_TEST_THREADS=2 && \
 	grep " Running " tests.out | sed -e 's/Running//g' | xargs -n 1 -I {} ${LOCAL_PREFIX}/bin/kcov --verify --coveralls-id=${COVERALLS_REPO_TOKEN} --include-pattern tikv/src --exclude-pattern tikv/src/bin --strip-path `pwd`/ target/kcov {} --nocapture || true
-	bash <(curl -s https://codecov.io/bash)
+	bash <(curl -s https://codecov.io/bash) -s ./target/kcov
