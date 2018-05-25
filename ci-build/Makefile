@@ -47,8 +47,5 @@ prepare_cover:
 	cargo install cargo-tarpaulin
 
 cover_linux cover_osx:
-	export LOG_LEVEL=DEBUG && \
-	export RUST_BACKTRACE=1 && \
-	export RUST_TEST_THREADS=2 && \
-	grep " Running " tests.out | sed -e 's/Running//g' | xargs -n 1 -I {} ${LOCAL_PREFIX}/bin/kcov --verify --include-pattern=tikv/src --exclude-pattern=tikv/src/bin,/.cargo ./target/cov {} || true
-	bash <(curl -s https://codecov.io/bash) -s ./target/cov
+	cargo tarpaulin --no-count --skip-clean --out Xml
+	bash <(curl -s https://codecov.io/bash)
