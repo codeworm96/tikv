@@ -1,7 +1,7 @@
 version: 2
 jobs:
   test:
-    working_directory: ~/tikv-ci
+    working_directory: ~/tikv
     machine: true
     environment:
       # CircleCI does not support env variable interpolation, set those later
