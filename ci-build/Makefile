@@ -44,7 +44,7 @@ test_linux test_osx:
 	export CI=true && ${CI_BUILD_DIR}/test.sh
 
 prepare_cover:
-	cargo install cargo-tarpaulin
+	RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin --git https://github.com/xd009642/tarpaulin --branch develop
 
 cover_linux cover_osx:
 	cargo tarpaulin --no-count --skip-clean --out Xml
