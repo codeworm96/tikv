@@ -172,7 +172,7 @@ jobs:
       - run:
           name: Calculating code coverage
           command: |
-            cargo tarpaulin --no-count --skip-clean --ciserver circle-ci --coveralls $COVERALLS_REPO_TOKEN
+            cargo tarpaulin --no-count --skip-clean --ciserver circle-ci --coveralls ijG28Zi4WkVb182qkqIw8ytHrGooH964r
           no_output_timeout: 1800s
       - save_cache:
           name: Saving ./target Cache
