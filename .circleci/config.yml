@@ -172,8 +172,7 @@ jobs:
       - run:
           name: Calculating code coverage
           command: |
-            cargo tarpaulin --no-count --skip-clean --out Xml
-            bash <(curl -s https://codecov.io/bash)
+            cargo tarpaulin --no-count --skip-clean --ciserver circle-ci --coveralls $COVERALLS_REPO_TOKEN
           no_output_timeout: 1800s
       - save_cache:
           name: Saving ./target Cache
